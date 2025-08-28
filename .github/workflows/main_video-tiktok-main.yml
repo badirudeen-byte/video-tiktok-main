@@ -27,7 +27,8 @@ jobs:
           cp .env.example .env
           echo "APP_ENV=production" >> .env
           echo "APP_DEBUG=true" >> .env
-          echo "APP_URL=https://video-tiktok-main.azurewebsites.net" >> .env
+          echo "APP_KEY=base64:placeholderkey1234567890" >> .env
+          echo "APP_URL=https://video-tiktok-main-erehckdxh9cgh2gg.canadacentral-01.azurewebsites.net" >> .env
 
       - name: Install Composer dependencies
         run: composer install --no-dev --optimize-autoloader
@@ -84,4 +85,5 @@ jobs:
           app-name: 'video-tiktok-main'
           slot-name: 'Production'
           package: .
+
 
