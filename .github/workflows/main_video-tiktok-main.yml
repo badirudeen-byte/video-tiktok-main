@@ -24,7 +24,6 @@ jobs:
 
       - name: Create .env file for build
         run: |
-
           echo "APP_ENV=production" >> .env
           echo "APP_DEBUG=true" >> .env
           echo "APP_KEY=base64:placeholderkey1234567890" >> .env
@@ -72,6 +71,13 @@ jobs:
         with:
           name: laravel-app
 
+      - name: Show what was downloaded (sanity check)
+        run: |
+          echo "Workspace:"
+          ls -la
+          echo "Artifact contents:"
+          ls -la ./laravel-app
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -83,8 +89,5 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'video-tiktok-main'
-          slot-name: 'Production'
-          package: .
-
-
-
+          # slot-name: 'Production'  # optional; defaults to production
+          package: ./laravel-app
