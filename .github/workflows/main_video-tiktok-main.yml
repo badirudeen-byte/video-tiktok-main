@@ -88,6 +88,8 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'video-tiktok-main'
-          # slot-name: 'Production'  # optional; defaults to production
-          package: ./laravel-app
+          app-name: 'video-tiktok-live'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
+          package: .
+
